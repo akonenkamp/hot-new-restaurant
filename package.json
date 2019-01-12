@@ -1,0 +1,24 @@
+{
+  "name": "hot-new-restaurant",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bean.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akonenkamp/hot-new-restaurant.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akonenkamp/hot-new-restaurant/issues"
+  },
+  "homepage": "https://github.com/akonenkamp/hot-new-restaurant#readme"
+}
