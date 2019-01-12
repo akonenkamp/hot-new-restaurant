@@ -30,7 +30,7 @@
         <div class="container">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Current Reservations</div>
+                <div class="panel-heading" id="current-res">Current Reservations</div>
 
                 <!-- Table -->
                 <table class="table" id="currentTables">
@@ -46,10 +46,43 @@
 
                 <!-- Table -->
                 <table class="table" id="currentWaitlist">
+                    <th scope="col" id="name">#</th>
+                    <th scope="col" id="phoneNum">First</th>
+                    <th scope="col" id="email">Last</th>
+                    <th scope="col" id="uniqueID">Handle</th>
 
                 </table>
             </div>
         </div>
 </body>
+
+
+<script type="text/javascript">
+    // QUESTION: What is this code doing?
+    $("#search-btn").on("click", function () {
+        var searchedReservations = $("#current-res").val().trim();
+
+        // Using a RegEx Pattern to remove spaces from searchedCharacter
+        // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+        searchedReservations = searchedReservations.replace(/\s+/g, "").toLowerCase();
+
+        // QUESTION: What does $.get do? What are the parameters it is expecting?
+        $.get("/api/reservation" + searchedReservations, function (data) {
+            console.log(data);
+            if (data) {
+                $("#currentWaitlist").show();
+                $("#name").text(data.name);
+                $("#phoneNum").text(data.phone);
+                $("#email").text(data.email);
+                $("#uniqueID").text(data.uniqueID);
+
+            }
+            else {
+                $("#name").text("No customer info to show.");
+                $("#currentWaitlist").hide();
+            }
+        });
+    });
+</script>
 
 </html>
